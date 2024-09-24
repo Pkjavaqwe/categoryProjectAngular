@@ -1,0 +1,20 @@
+<div class="card" [ngStyle]="cardBackground" style=" border: 2px solid #007bff; border-radius: 15px; margin:10px; ">
+    <!-- <img height="150" src={(category.employeePic!=undefined)?(`data:image/png;base64,${category.employeePic}`):(empImage)} class="card-img-top" alt="..." /> -->
+    <!--  -->
+    <img [src]="(category.categoryImage ) ? ('data:image/png;base64,' +arrayBufferToBase64(category.categoryImage.data)):'https://5.imimg.com/data5/SELLER/Default/2021/11/JU/IF/CF/11337912/e-commerce-product-image-editing-services.jpg'" height="200" width="300" alt="category">
+        <button mat-raised-button [routerLink]="['/editpic/',category.categoryId]">EDIT Pic<mat-icon>edit</mat-icon></button> 
+                
+    <!-- <Link class="" to={`/fileupload/${category._id}`}><Edit/></Link> -->
+          <div class="card-body" style="width: 18rem"> 
+        <h6>{{category.categoryId | number:".0"}}</h6>
+        <h5 class="card-title">{{category.categoryName | titlecase}}</h5>
+        <h5 class="card-title">{{category.categoryStock | titlecase}}</h5>
+        <h5 class="card-title">{{category.dateCteated | titlecase}}</h5>
+        
+        </div>
+        <div  class="example-button-row">
+        <button mat-flat-button [routerLink]="['/editcategory/',category.categoryId]">EDIT<mat-icon>edit</mat-icon></button> 
+         <button mat-flat-button (click)="emitter.emit(category.categoryId)">DELETE<mat-icon>delete</mat-icon></button>  
+    </div>
+</div>
+

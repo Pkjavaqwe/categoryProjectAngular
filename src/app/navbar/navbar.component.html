@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-sm  border-bottom border-body navbar-light" style="background-color: #ca3521;">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="#">Navbar scroll</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link active"  routerLink="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="addcategory">Addcategory</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="addcategory"></a>
+          </li>          
+          <li class="nav-item">
+            <a class="nav-link disabled" routerLink="#" tabindex="-1" aria-disabled="true">Link</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav  mb-2 mb-lg-0">
+          <li class="nav-item" *ngIf="(username | async)==''">
+            <a class="nav-link" routerLink="login">login</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link btn btn-warning" (click)="logOut()" *ngIf="(username | async) !=''" >logout</a>
+          </li>
+            <li *ngIf="account.loginSuccessFlag" class="nav-item">
+              <small class="text-white" >{{username | async}}</small>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

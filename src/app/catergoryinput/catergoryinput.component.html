@@ -1,0 +1,154 @@
+
+
+ <div class="container mt-4">
+    <form [formGroup]="categoryForm" (submit)="collectCategoryData()">
+        <!-- Category ID.............................. -->
+        <div class="mb-3">
+            <label for="categoryId" class="form-label">Category ID</label>
+            <input type="number" class="form-control" id="categoryId"  title="categoryId" formControlName="categoryId" [readOnly]="routeUrl?.includes('editcategory')" >
+             <div *ngIf="categoryId?.touched">
+                  <div *ngIf="categoryId?.hasError('required')"> category Id is required</div>
+                  <div *ngIf="categoryId?.hasError('minlength')"> min 3 digits required</div>
+              </div>
+        </div>
+       <br>
+        <!-- Category Name................... -->
+        <!-- <p class="example-container">...................
+            <mat-form-field appearance="fill">
+                <mat-label>Category Name</mat-label>
+            <input matInput type="text" class="form-control" id="categoryName" title="categoryName" formControlName="categoryName" (keyup)="testError()" >
+            <div *ngIf="categoryName?.touched">
+                <div *ngIf="categoryName?.hasError('pattern')" > category Name must contain alphabets only</div>
+            </div>
+            </mat-form-field>
+         </p>.............. -->
+        
+        <div class="mb-3">
+            <label for="categoryName" class="form-label">Category Name</label>
+            <input type="text" class="form-control" id="categoryName" title="categoryName" formControlName="categoryName" (keyup)="testError()" >
+            <div *ngIf="categoryName?.touched">
+                <div *ngIf="categoryName?.hasError('pattern')" > category Name must contain alphabets only</div>
+            </div>
+       
+        </div>
+
+        <!-- Category Stock................................ -->
+          <!-- <p class="example-container">..................
+            <mat-form-field appearance="fill">
+                <mat-label>Category Stock</mat-label>
+                <input  matInput type="text" class="form-control" id="categoryStock"  title="categoryStock" formControlName="categoryStock">
+             
+            </mat-form-field>
+         </p>............................................
+         -->
+        <div class="mb-3">
+            <label for="categoryStock" class="form-label">Category Stock</label>
+            <input type="text" class="form-control" id="categoryStock"  title="categoryStock" formControlName="categoryStock">
+           <div *ngIf="categoryStock?.touched">
+                <div *ngIf="categoryForm?.hasError('valuematch')"> stock must contain category Id as its part</div> 
+                <div *ngIf="categoryStock?.hasError('required')"> category Stock is required</div>
+            </div>
+        </div>
+
+        <!-- Number of Products.......................... -->
+        <div class="mb-3">
+            <label for="numberOfProducts" class="form-label">Number of Products</label>
+            <input type="text" class="form-control" id="numberOfProducts"  title="numberOfProducts" formControlName="numberOfProducts">
+        </div>
+
+        <!-- Date Created.......................................... -->
+        <div class="mb-3">
+            <label for="dateCteated" class="form-label">Date Created</label>
+            <input type="datetime-local" class="form-control" id="dateCteated"  title="dateCteated" formControlName="dateCteated" >
+        </div>
+
+        <!-- Category Image.................................. -->
+        <!-- <div class="mb-3">...........................
+            <label for="categoryImage" class="form-label">Category Image</label>
+            <input type="file" class="form-control" id="categoryImage" title="categoryImage" formControlName="categoryImage" accept="image/*" required>
+        </div> ......................... -->
+
+        <!-- Submit Button.................... -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>  
+
+
+
+<div class="container mt-4">
+    <form [formGroup]="categoryForm" (submit)="collectCategoryData()">
+      
+      <!-- Category ID -->
+     <div  class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Category ID</mat-label>
+            <input matInput type="number" formControlName="categoryId" [readonly]="routeUrl?.includes('editcategory')">
+            <mat-error *ngIf="categoryId?.touched && categoryId?.hasError('required')">
+              Category ID is required
+            </mat-error>
+            <mat-error *ngIf="categoryId?.touched && categoryId?.hasError('minlength')">
+              Minimum 3 digits required
+            </mat-error>
+          </mat-form-field>
+     </div>
+  <br>
+      <!-- Category Name -->
+       <div class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Category Name</mat-label>
+            <input matInput type="text" formControlName="categoryName" (keyup)="testError()">
+            <mat-error *ngIf="categoryName?.touched && categoryName?.hasError('pattern')">
+              Category Name must contain alphabets only
+            </mat-error>
+          </mat-form-field>
+       </div>
+      
+      <br>
+      <div  class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Category Stock</mat-label>
+            <input matInput type="text" formControlName="categoryStock">
+            <mat-error *ngIf="categoryStock?.touched && categoryStock?.hasError('required')">
+              Category Stock is required
+            </mat-error>
+            <mat-error *ngIf="categoryForm?.hasError('valuematch')">
+              Stock must contain Category ID as part of its value
+            </mat-error>
+          </mat-form-field>
+      </div>
+      <!-- Category Stock -->
+     
+      <br>
+      <!-- Number of Products -->
+       <div  class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Number of Products</mat-label>
+            <input matInput type="text" formControlName="numberOfProducts">
+          </mat-form-field>
+       </div>
+      
+      <br>
+      <!-- Date Created -->
+       <!-- <div  class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Date Created</mat-label>
+            <input matInput type="datetime-local" formControlName="dateCteated">
+          </mat-form-field>
+       </div> -->
+       <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateCteated">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      
+     
+      <br>
+      <!-- Submit Button -->
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+      
+    </form>
+  </div>
+  
+

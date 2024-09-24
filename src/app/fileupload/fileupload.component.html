@@ -1,0 +1,8 @@
+<div>
+    <p>
+        <b><span>Employee Id </span><span> {{categoryId}}</span></b>
+    </p>
+    <label>Select image: </label>
+    <input type="file" title="categoryImage" (change)="getFile($event)">
+    <button (click)="upload()" >upload Pic</button>
+</div>

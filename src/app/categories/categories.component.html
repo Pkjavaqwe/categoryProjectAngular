@@ -1,0 +1,13 @@
+<div>
+   <input type="color" title="color" [(ngModel)]="bgcolor" >
+</div>
+<div>
+   <label>Name to Search Category:</label>
+   <input type="text" title="categoryName" (keyup)="searchCategory(nameNode.value)" #nameNode>
+</div>
+<div class="d-flex flex-wrap">
+   <div  *ngFor="let category of categories" >
+      <app-categorycard [category]="category" [bgcolor]="bgcolor" (emitter)="deleteCategoryById($event)" ></app-categorycard>
+   </div>
+   
+</div>
